@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "georef"
+version = "0.1.0"
+description = "Agente de georreferenciación de imágenes de mapas"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic[vertex]",
+    "langsmith",
+    "google-cloud-documentai",
+    "opencv-python-headless",
+    "numpy",
+    "scipy",
+    "scikit-image",
+    "rasterio",
+    "pyproj",
+    "pymupdf",
+    "pillow",
+    "pydantic",
+    "typer",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+georef = "georef.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
